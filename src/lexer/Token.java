@@ -4,6 +4,11 @@ public class Token {
     private String Type;
     private String value;
 
+    public Token(String Type, String value){
+        this.Type = Type;
+        this.value = value;
+    }
+
     @Override
     public String toString() {
         return "Token{" +
@@ -28,7 +33,5 @@ public class Token {
     public void setType(String type) {
         Type = type;
     }
-
-
 }
 
