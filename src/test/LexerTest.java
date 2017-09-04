@@ -18,7 +18,7 @@ public class LexerTest {
     }
 
     @Test
-    public void testComment1()
+    public void testCommentTextOnly()
     {
         List<Token> testComment = Lexer.scanLine("Contemplation: A comment");
         ArrayList<Token> tkArrayList = new ArrayList<Token>();
@@ -27,13 +27,42 @@ public class LexerTest {
     }
 
     @Test
-    public void testComment2()
+    public void testCommentNumbers()
     {
         List<Token> testComment = Lexer.scanLine("Contemplation: 12345");
         ArrayList<Token> tkArrayList = new ArrayList<Token>();
         tkArrayList.add(new Token("COMMENT", "12345"));
         assertEquals(tkArrayList, testComment);
     }
+
+    @Test
+    public void testCommentEmpty()
+    {
+        List<Token> testComment = Lexer.scanLine("Contemplation:");
+        ArrayList<Token> tkArrayList = new ArrayList<Token>();
+        tkArrayList.add(new Token("COMMENT", ""));
+        assertEquals(tkArrayList, testComment);
+    }
+
+    @Test
+    public void testCommentOnlyWhitespace()
+    {
+        List<Token> testComment = Lexer.scanLine("Contemplation:                           ");
+        ArrayList<Token> tkArrayList = new ArrayList<Token>();
+        tkArrayList.add(new Token("COMMENT", "                          "));
+        assertEquals(tkArrayList, testComment);
+    }
+
+
+    @Test
+    public void testCommentLettersAndNumbers()
+    {
+        List<Token> testComment = Lexer.scanLine("Contemplation: Meep 343");
+        ArrayList<Token> tkArrayList = new ArrayList<Token>();
+        tkArrayList.add(new Token("COMMENT", "Meep 343"));
+        assertEquals(tkArrayList, testComment);
+    }
+
 
     @org.junit.After
     public void tearDown() throws Exception
