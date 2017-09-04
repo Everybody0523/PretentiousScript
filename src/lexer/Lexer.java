@@ -10,8 +10,6 @@ import java.util.List;
 
 public class Lexer
 {
-
-
     /**
      * Takes in one line of PretentiousScript(tm) code and returns a list of tokens.
      * Precondition: line cannot have trailing whitespace
@@ -28,13 +26,9 @@ public class Lexer
         {
             //Token tk = new Token("COMMENT", line.substring(1, (line.length())));
             StringBuilder sb = new StringBuilder();
-            for (int i = 1; i < components.length; i++){
-                sb.append(components[i]);
-                if (i < components.length - 1)
-                {
-                    sb.append(" ");
-                }
-
+            for (int i = 15; i < line.length(); i++)
+            {
+                sb.append(line.charAt(i));
             }
             Token tk = new Token("COMMENT", sb.toString());
             List<Token> output = new ArrayList<>();
@@ -46,7 +40,8 @@ public class Lexer
         {
             //Everything else
             List<Token> output = new ArrayList<>();
-            for (String component : components){
+            for (String component : components)
+            {
                 //Checking for primitive
                 if (Helpers.containsInArray(Token.PRIMITIVES, component))
                 {
@@ -66,6 +61,12 @@ public class Lexer
                     output.add(tk);
                 }
 
+                else if (component.matches("(\"(.)*\")"))
+                {
+                    Token tk = new Token("Character", component);
+                    output.add(tk);
+                }
+
                 else if (Helpers.containsInArray(Token.OPERATORS, component))
                 {
                     Token tk = new Token("OPERATOR", component);
@@ -79,17 +80,7 @@ public class Lexer
 
     public static void main(String[] args)
     {
-        List<Token> test = scanLine("Contemplation: Asic is a meanie face");
-        for (Token t : test){
-            System.out.println(t);
-        }
 
-        System.out.println("MEEP");
-
-        List<Token> test1 = scanLine("Member_of_Z x = 6 + 9");
-        for (Token t : test1){
-            System.out.println(t);
-        }
     }
 }
 
