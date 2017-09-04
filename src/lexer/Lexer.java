@@ -10,12 +10,6 @@ import java.util.List;
 
 public class Lexer
 {
-    public static final String[] COND_KEYWORDS = {"Suppose", "Alternatively", "Otherwise"};
-    public static final String[] OPERATORS = {"=", "+", "-"};
-    public static final String[] PRIMITIVES = {"Member_of_Z", "Character"};
-    public static final String[] BREAK_STATEMENTS = {"DELIMIT", "Cease_pondering_of_possibilities"};
-    public static final String[] THINGS = {"Function", "Class"};
-    public static final String[] COMMENT = {"Contemplation:"};
 
 
     /**
@@ -36,7 +30,11 @@ public class Lexer
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i < components.length; i++){
                 sb.append(components[i]);
-                sb.append(" ");
+                if (i < components.length - 1)
+                {
+                    sb.append(" ");
+                }
+
             }
             Token tk = new Token("COMMENT", sb.toString());
             List<Token> output = new ArrayList<>();
@@ -50,17 +48,26 @@ public class Lexer
             List<Token> output = new ArrayList<>();
             for (String component : components){
                 //Checking for primitive
-                if (Helpers.containsInArray(PRIMITIVES, component)){
+                if (Helpers.containsInArray(Token.PRIMITIVES, component))
+                {
                     Token tk = new Token("PRIMITIVE", component);
                     output.add(tk);
                 }
 
-                else if (component.matches("(\\w)*") && !(component.matches("(\\d)*"))){
+                else if (component.matches("(\\w)*") && !(component.matches("(\\d)*")))
+                {
                     Token tk = new Token("IDENTIFIER", component);
                     output.add(tk);
                 }
 
-                else if (Helpers.containsInArray(OPERATORS, component)){
+                else if (component.matches("(\\d)*"))
+                {
+                    Token tk = new Token("MEMBER_OF_Z", component);
+                    output.add(tk);
+                }
+
+                else if (Helpers.containsInArray(Token.OPERATORS, component))
+                {
                     Token tk = new Token("OPERATOR", component);
                     output.add(tk);
                 }
@@ -74,6 +81,13 @@ public class Lexer
     {
         List<Token> test = scanLine("Contemplation: Asic is a meanie face");
         for (Token t : test){
+            System.out.println(t);
+        }
+
+        System.out.println("MEEP");
+
+        List<Token> test1 = scanLine("Member_of_Z x = 6 + 9");
+        for (Token t : test1){
             System.out.println(t);
         }
     }
