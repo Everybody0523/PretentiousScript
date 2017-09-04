@@ -62,11 +62,4 @@ public class LexerTest {
         tkArrayList.add(new Token("COMMENT", "Meep 343"));
         assertEquals(tkArrayList, testComment);
     }
-
-
-    @org.junit.After
-    public void tearDown() throws Exception
-    {
-    }
-
 }
