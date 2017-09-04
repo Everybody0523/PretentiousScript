@@ -12,8 +12,11 @@ import java.util.List;
 
 public class Parser()
 {
-  
-  public static boolean expect(Token token){
 
+  /**
+  * Raise errors if the next token does not match expected token
+  **/
+  public static boolean expect(Token token){
+    
   }
 }
