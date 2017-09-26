@@ -26,7 +26,7 @@ struct _TokenNode
     TokenNode * prev;
 }
 
-Token * newTokenNode(Token * value, Token * next, Token * prev)
+TokenNode * newTokenNode(Token * value, Token * next, Token * prev)
 {
     TokenNode * output = malloc(sizeof(TokenNode));
     output->value = value;
