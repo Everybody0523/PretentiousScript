@@ -5,8 +5,8 @@
 
 struct _Token
 {
-        char * type;
-        char * value;
+    char * type;
+    char * value;
 };
 
 Token * newToken(const char * type, const char * value)
@@ -16,6 +16,22 @@ Token * newToken(const char * type, const char * value)
     output->value = malloc(strlen(value) + 1);
     strcpy(output->type, type);
     strcpy(output->value, value);
+    return output;
+}
+
+struct _TokenNode
+{
+    Token * value;
+    TokenNode * next;
+    TokenNode * prev;
+}
+
+Token * newTokenNode(Token * value, Token * next, Token * prev)
+{
+    TokenNode * output = malloc(sizeof(TokenNode));
+    output->value = value;
+    output->next = next;
+    output->prev = prev;
     return output;
 }
 
