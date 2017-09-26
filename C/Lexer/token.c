@@ -34,11 +34,3 @@ Token * newTokenNode(Token * value, Token * next, Token * prev)
     output->prev = prev;
     return output;
 }
-
-int main()
-{
-    Token * t = newToken("Member_of_Z", "44");
-    printf("%s\n", t->type);
-    printf("%s\n", t->value);
-    return 0;
-}
