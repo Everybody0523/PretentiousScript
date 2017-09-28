@@ -34,3 +34,15 @@ TokenNode * newTokenNode(Token * value, Token * next, Token * prev)
     output->prev = prev;
     return output;
 }
+
+void freeTokenNodes(TokenNode * head)
+{
+    TokenNode * temp;
+
+    while(head != NULL)
+    {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
