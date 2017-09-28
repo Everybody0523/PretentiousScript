@@ -1,6 +1,5 @@
 #include "token.h"
 #include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 struct _Token
