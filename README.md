@@ -1,1 +1,3 @@
-# Neumann Ka-Chun Hon is not a pretentious twat.
+# PretentiousScript
+
+A interpreter for a programming language with fairly pretentious-sounding keywords
