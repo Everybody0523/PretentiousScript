@@ -17,6 +17,18 @@ int main()
     }
 
     int matched = regexec(&compiled, shouldMatch, 0, 0, 0);
+    printf("Testing: printable character:")
+    printf("%d\n", matched);
 
-    printf("%d\n", matched); //0 if matches. It's currently printing 1??
+
+    char matchDigit[] = "[[:digit:]]*";
+    shouldMatch[] = "3434312351235342349";
+    failed= regcomp(&compiled,rexpr,REG_EXTENDED);
+    if (failed)
+    {
+        fprintf(stderr, "Failed to compile regular expression\n");
+        return -1;
+    }
+    printf("Testing: Any number of digits:")
+    printf("%d\n", matched);
 }
