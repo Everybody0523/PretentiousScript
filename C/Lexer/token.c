@@ -68,3 +68,11 @@ struct _TokenNodeNode
     TokenNode * value;
     TokenNodeNode * next;
 };
+
+TokenNode * newTokenNode(TokenNode * value, TokenNodeNode * next)
+{
+    TokenNode * output = malloc(sizeof(TokenNodeNode));
+    output->value = value;
+    output->next = next;
+    return output;
+}
