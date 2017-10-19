@@ -52,6 +52,11 @@ TokenNode * scanLine(const char * line)
 }
 
 
+
+
+/*
+* Main method for testing purposes.
+*/
 int main()
 {
     const char * t = "MEMBER_OF_Z x = 340";

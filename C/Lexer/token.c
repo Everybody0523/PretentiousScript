@@ -61,3 +61,10 @@ void freeTokenNodes(TokenNode * head)
         free(temp);
     }
 }
+
+
+struct _TokenNodeNode
+{
+    TokenNode * value;
+    TokenNodeNode * next;
+};
