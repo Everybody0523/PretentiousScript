@@ -1,5 +1,6 @@
 #include "token.h"
 #include "token.c"
+#include "constants.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -45,6 +46,9 @@ TokenNode * scanLine(const char * line)
     else // Everything else
     {
 
+        while(token != NULL){
+
+        }
         return NULL;
     }
     return NULL;
@@ -52,7 +56,38 @@ TokenNode * scanLine(const char * line)
 }
 
 
+TokenNode * analyzeString(const char * s)
+{
+    int a = strcmp(s, PRIMITIVES[0])
+    int b = strcmp(s, PRIMITIVES[1])
+    if (a == 0 || b == 0)
+    {
+        const char * v = (a == 0) ? PRIMITIVES[0] : PRIMITIVES[1]);
+        Token * t1 = newToken("PRIMITIVE", v)
+        TokenNode * output = newTokenNode(t1, NULL, NULL);
+        return output;
+    }
+    else
+    {
+    }
+}
 
+/*
+Returns 0 if it DOESN'T match (because seriously, POSIX's built-in returning
+0 ON match when 0 usually means false makes no sense). Returns 1 on failure
+to match, and returns -1 when it fails to compile.
+*/
+int regexComp(const char * str, const char * pattern)
+{
+    regex_t compiled;
+    int failed = regcomp(&compiled,pattern,REG_EXTENDED);
+    if (failed)
+    {
+        return -1;
+    }
+    int matched = regexec(&compiled, str, 0, 0, 0);
+    return (matched == 0) ? 1 : 0
+}
 
 /*
 * Main method for testing purposes.
